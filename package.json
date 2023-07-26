@@ -1,8 +1,16 @@
 {
   "name": "deep-proxy-monitor",
   "description": "A simple library to monitoring the access to all the properties including nested properties in arrays and objects using the Proxy ES6 implementation.",
-  "version": "0.1.2",
-  "main": "deep-proxy-monitor.mjs",
+  "version": "0.2.0",
+  "main": "dist/cjs/index.js",
+  "module": "dist/mjs/index.js",
+  "types": "dist/mjs/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/mjs/index.js",
+      "require": "./dist/cjs/index.js"
+    }
+  },
   "author": {
     "name": "Stevens Pineda",
     "email": "yo@stevenscol.co",
@@ -23,27 +31,32 @@
     "url": "https://github.com/ScolDev/deep-proxy-monitor.git"
   },
   "license": "MIT",
-  "type": "module",
   "engines": {
     "node": ">=14.0.0"
   },
+  "files": [
+    "dist/"
+  ],
   "scripts": {
     "lint": "standard",
     "test": "vitest",
+    "build": "rm -fr dist/* && tsc -p tsconfig.json && tsc -p tsconfig-cjs.json && ./scripts/fixup",
     "pre-commit": "npm run lint",
     "coverage": "vitest run --coverage",
     "prepare": "husky install"
   },
   "devDependencies": {
+    "@types/jest": "^29.5.3",
     "@vitest/coverage-c8": "^0.28.5",
     "eslint": "^8.34.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-n": "^15.6.1",
     "eslint-plugin-promise": "^6.1.1",
+    "husky": "^8.0.0",
     "standard": "^17.0.0",
+    "typescript": "^5.1.6",
     "vite": "^4.1.0",
-    "vitest": "^0.28.5",
-    "husky": "^8.0.0"
+    "vitest": "^0.28.5"
   }
 }
