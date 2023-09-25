@@ -1,3 +1,5 @@
+// @ts-check
+
 import { describe, test, expect, vi } from 'vitest'
 import { deepProxy, proxyMonitor } from '../src/'
 
@@ -110,7 +112,7 @@ describe('tests for deepProxy functionalities', () => {
       }]
     }
     const monitorStrategy = {
-      defaultValue: 0,
+      initialValue: 0,
       strategy: (objToMonitor, prop) => {
         if (typeof objToMonitor[prop] === 'number') {
           ++objToMonitor[prop]

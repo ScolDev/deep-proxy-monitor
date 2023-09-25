@@ -1,7 +1,7 @@
 {
   "name": "deep-proxy-monitor",
   "description": "A simple library to monitoring the access to all the properties including nested properties in arrays and objects using the Proxy ES6 implementation.",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "main": "dist/cjs/index.js",
   "module": "dist/mjs/index.js",
   "types": "dist/mjs/index.d.ts",
@@ -39,11 +39,16 @@
   ],
   "scripts": {
     "lint": "standard",
-    "test": "vitest",
-    "build": "rm -fr dist/* && tsc -p tsconfig.json && tsc -p tsconfig-cjs.json && ./scripts/fixup",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "build": "rm -fr dist/* && npm run build:mjs && npm run build:cjs && ./scripts/fixup",
+    "build:mjs": "tsc -p tsconfig.json",
+    "build:cjs": "tsc -p tsconfig-cjs.json",
     "pre-commit": "npm run lint",
     "coverage": "vitest run --coverage",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "pre-publish": "npm run lint && npm run test && npm run build",
+    "publish": "npm run pre-publish && npm publish --access public"
   },
   "devDependencies": {
     "@types/jest": "^29.5.3",
