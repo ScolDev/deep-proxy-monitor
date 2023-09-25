@@ -59,7 +59,7 @@ const defaultMonitorStrategy = (monitorObject, prop) => {
 
 /**
  * @param {ProxyConfig} configObject Configurations for the clonning process
- * @returns {[object, object]} Returns an array containing the proxy and monitor object.
+ * @returns {[Object.<string, any>, Object.<string, any>]} Returns an array containing the proxy and monitor object.
  */
 const cloneWithProxy = ({ objToProxy, handler, monitorStrategy }) => {
   const proxyObject = {}
@@ -133,7 +133,7 @@ const buildHandlerWithMonitor = (objToMonitor = {}, strategy = defaultMonitorStr
 /**
  * @param {Object.<string, any>} objToProxy Object to convert to a deep proxy one.
  * @param {ProxyTraps} handler Object containing the traps for the proxy object.
- * @returns {object} A deep proxy object.
+ * @returns {Object.<string, any>} A deep proxy object.
  */
 export const deepProxy = (objToProxy, handler = defaultHandler) => {
   return cloneWithProxy({ objToProxy, handler })[0]
@@ -142,7 +142,7 @@ export const deepProxy = (objToProxy, handler = defaultHandler) => {
 /**
  * @param {object} objToProxy Object to be proxy.
  * @param {MonitorStrategy=} monitorStrategy An object containing the strategy to be used in the proxy object.
- * @returns {object} A depth proxy with a strategy for accessing properties.
+ * @returns {[Object.<string, any>, Object.<string, any>]} Returns an array containing the proxy and monitor object.
  */
 export const proxyMonitor = (objToProxy, monitorStrategy) => {
   if (typeof monitorStrategy === 'undefined') {
