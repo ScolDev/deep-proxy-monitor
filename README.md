@@ -122,7 +122,7 @@ const testObj = {
 }
 
 const monitorStrategy = {
-  defaultValue: 0,
+  initialValue: 0,
   strategy: (objToMonitor, prop) => {
     // count the number of element access
     if (typeof objToMonitor[prop] === 'number') {

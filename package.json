@@ -1,7 +1,7 @@
 {
   "name": "deep-proxy-monitor",
   "description": "A simple library to monitoring the access to all the properties including nested properties in arrays and objects using the Proxy ES6 implementation.",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "main": "dist/cjs/index.js",
   "module": "dist/mjs/index.js",
   "types": "dist/mjs/index.d.ts",
